@@ -15,7 +15,7 @@
 body{
 	font-family: 'Roboto', sans-serif;
 	min-width: 100%;
-	min-height: 100vh;
+	min-height: 150vh;
 }
 
 .body-container{
@@ -130,10 +130,11 @@ body{
 	align-items:center;
 }
 
-.main-nav-right img{
+.mini-avatar{
 	height: 4vh;
 	border-radius:50%;
 }
+
 
 .main-nav-right>div>i{
 	margin-left: 5px;
@@ -180,11 +181,30 @@ body{
 	color: var(--header-color);
 	display:flex;
 	align-items:center;
-	margin-top: 16px;
+	/* justify-content:space-between; */
+	margin-top: 20px;
+	padding: 0px 60px;
 }
 
+.mini-avi-area{
+	width: 26%;
+	height:100%;
+	display:flex;
+	align-items:center;
+	/* background:blue; */
+}
+.mini-avi-area>strong{
+	margin-left: 5px;
+	font-size:14px;
+}
 
-.overview-header>h3{
+.respository-nav{
+	height:100%;
+	width:74%;
+	/* background:pink; */
+}
+
+.respository-nav>h3{
 	height:100%;
 	width: 190px;
 	font-size: 13.5px;
@@ -194,14 +214,14 @@ body{
 	align-items:center;
 	justify-content:center;
 	border-bottom: 2px solid #f9826c;
-	margin: 0 auto 0 28vw;
+	/* margin: 0 auto 0 0; */
 }
 
-.overview-header>h3>i{
+.respository-nav i{
 	margin-right: 11px;
 }
 
-.overview-header>h3>span{
+.respository-nav span{
 	font-size: 12px;
 	margin-left: 11px;
 	min-height:26px;
@@ -212,6 +232,36 @@ body{
 	display:flex;
 	align-items:center;
 	justify-content:center;
+}
+
+.user-container{
+	position:relative;
+	/* top: -50px; */
+	display:flex;
+	justify-content: space-between;
+	padding: 15px 60px;
+}
+
+.profile-area{
+	width:26%;
+}
+
+/* .profile-area>div{ */
+	/* height: 46vh; */
+	/* width:46vh; */
+	/* background:pink; */
+/* } */
+
+.proile-avatar{
+	height: 21vw;
+	width:21vw;
+	border-radius:50%;
+	
+}
+
+.repository-area{
+	background:pink;
+	width:74%;
 }
 
 

@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+:root{
+	--accent-color:#444d56;
+	--header-color:#24292e;
+	--secondary-color:#eaecef;
+}
+
 *{
 	margin:0;
 	padding:0;
@@ -12,19 +18,24 @@ body{
 	min-height: 100vh;
 }
 
+.body-container{
+	min-height:100vh;
+	width: 100%;
+}
+
 .inactive{
 	display:none;
 }
 
 /* THE TOP NAV */
 .main-nav{
-	height: 11vh;
+	height: 63px;
 	width:100%;
-	background:#24292e;
+	background:var(--header-color);
 	display:flex;
 	justify-content: space-between;
 	align-items:center;
-	padding: 2vh 20px;
+	padding: 12px 20px;
 	color: white;
 }
 
@@ -34,18 +45,18 @@ body{
 }
 
 .main-nav-left>i{
-	font-size: 5.5vh;
+	font-size: 35px;
 }
 
 .main-nav-left>input,
 .main-nav-sec>input{
-	height: 5.5vh;
+	height: 33px;
 	width: 280px;
 	min-width: 180px;
-	border: 1px solid #444d56;
+	border: 1px solid var(--accent-color);
 	border-radius: 5px;
 	vertical-align: middle;
-	font-size: 2.3vh;
+	font-size: 13px;
 	background:#24292e;
 	padding: 12px 12px;
 	margin:	0 15px;
@@ -59,7 +70,7 @@ body{
 .main-nav-sec>input:focus{
 	background:#fff;
 	outline: transparent;
-	border: 1px solid #444d56;
+	border: 1px solid var(--accent-color);
 	
 }
 
@@ -91,7 +102,7 @@ body{
 }
 
 .main-nav-right>*{
-	margin: 0 10px;
+	margin-left: 15px;
 	cursor:pointer;
 }
 
@@ -140,7 +151,7 @@ body{
 
 .main-nav-sec{
 	width:100%;
-	background:#24292e;
+	background:var(--header-color);
 	display:flex;
 	justify-content: space-between;
 	align-items:center;
@@ -159,7 +170,49 @@ body{
 	font-size: 3.5vh;
 }
 
+.overview-header{
+	width:100%;
+	height: 50px;
+	position: -webkit-sticky;
+	position:sticky;
+	top:0;
+	border-bottom: 1px solid var(--secondary-color);
+	color: var(--header-color);
+	display:flex;
+	align-items:center;
+	margin-top: 16px;
+}
 
+
+.overview-header>h3{
+	height:100%;
+	width: 190px;
+	font-size: 13.5px;
+	font-weight: regular;
+	letter-spacing:1px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	border-bottom: 2px solid #f9826c;
+	margin: 0 auto 0 28vw;
+}
+
+.overview-header>h3>i{
+	margin-right: 11px;
+}
+
+.overview-header>h3>span{
+	font-size: 12px;
+	margin-left: 11px;
+	min-height:26px;
+	min-width:26px;
+	background: var(--secondary-color);
+	padding: 5px 7px;
+	border-radius: 15px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
 
 
 @media(max-width:1020px){
@@ -168,7 +221,7 @@ body{
 	}
 }
 
-@media(max-width:790px){
+@media(max-width:770px){
 	.main-nav-left,
 	.main-nav-right{
 		display:none;

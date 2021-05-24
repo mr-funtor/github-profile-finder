@@ -58,6 +58,7 @@ body{
 	border-radius: 5px;
 	vertical-align: middle;
 	font-size: 13px;
+	color:white;
 	background:#24292e;
 	padding: 12px 12px;
 	margin:	0 15px;
@@ -71,6 +72,7 @@ body{
 .main-nav-left>input:focus,
 .main-nav-sec>input:focus{
 	background:#fff;
+	color:black;
 	outline: transparent;
 	border: 1px solid var(--blue-accent);
 	width:80vh;

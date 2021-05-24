@@ -8,6 +8,7 @@
 </head>
 <body>
 	<main class="body-container">
+			<!-- TOP MAIN NAV -->
 		<nav class="main-nav">
 			<div class="main-nav-left">
 				<i class="fab fa-github"></i>
@@ -31,27 +32,32 @@
 				</div>
 			</div>
 			
+			<!-- SECONDARY NAV -->
 			<div class="main-nav-sec">
-				<i class="fas fa-bars"></i>
-				<input type="text" placeholder="Search for a github user"/>
+				<i class="fab fa-github"></i>
+				<input class="main-search" type="text" placeholder="Search for a github user"/>
 				<i class="fas fa-bell"></i>
 			</div>
 		</nav>
 		
 		
-		
+		<!-- REPOSITORIES HEADER/NAV -->
 		<header class="overview-header ">
 			<div class="mini-avi-area invisible" > 
 				<img class="mini-avatar" src="./img/how.png" alt=""/>
-				<strong>mr-funtor</strong>
+				<strong class="mini-avatar-name">mr-funtor</strong>
 			</div>
 			
 			<nav class="respository-nav">
-				<h3><i class="fas fa-book-open"></i> Repositories <span>8</span></h3>
+				<h3><i class="fas fa-book-open"></i> Repositories <span class="total-repositories">8</span></h3>
 			</nav>
 		</header>
 		
+		
+		
 		<section class="user-container" >
+		
+		<!-- PROFILE SECTION -->
 		
 			<aside class="profile-area ">
 				<div>
@@ -65,16 +71,19 @@
 				<p class="profile-bio">making frontend tech</p>
 			</aside>
 			
+			<!-- SECONDARY REPOSITORIES HEADER/NAV -->
 			<header class="overview-header2 inactive">
-				<div class="mini-avi-area invisible" > 
-					<img class="mini-avatar" src="./img/how.png" alt=""/>
-					<strong>mr-funtor</strong>
-				</div>
+				<!-- <div class="mini-avi-area invisible" >  -->
+					<!-- <img class="mini-avatar" src="./img/how.png" alt=""/> -->
+					<!-- <strong class="mini-avatar-name">mr-funtor</strong> -->
+				<!-- </div> -->
 				
 				<nav class="respository-nav">
-					<h3><i class="fas fa-book-open"></i> Repositories <span>8</span></h3>
+					<h3><i class="fas fa-book-open"></i> Repositories <span class="total-repositories">8</span></h3>
 				</nav>
 			</header>
+			
+			<!-- ALL RESPOSITORIES -->
 			
 			<div class="repository-area">
 				<div class="rep-input-wrapper">
@@ -135,7 +144,43 @@
 		
 		</section>
 		
-		
+		<!-- SCREEN LOADER -->
+		<div class="screen-loader inactive">
+			<section class="loading-wrapper">
+				<div class="loader">
+					<span style="--i:1;"></span>
+					<span style="--i:2;"></span>
+					<span style="--i:3;"></span>
+					<span style="--i:4;"></span>
+					<span style="--i:5;"></span>
+					<span style="--i:6;"></span>
+					<span style="--i:7;"></span>
+					<span style="--i:8;"></span>
+					<span style="--i:9;"></span>
+					<span style="--i:10;"></span>
+					<span style="--i:11;"></span>
+					<span style="--i:12;"></span>
+					<span style="--i:13;"></span>
+					<span style="--i:14;"></span>
+					<span style="--i:15;"></span>
+					<span style="--i:16;"></span>
+					<span style="--i:17;"></span>
+					<span style="--i:18;"></span>
+					<span style="--i:19;"></span>
+					<span style="--i:20;"></span>
+					<span style="--i:21;"></span>
+					<span style="--i:22;"></span>
+					<span style="--i:23;"></span>
+					<span style="--i:24;"></span>
+					<span style="--i:25;"></span>
+					<span style="--i:26;"></span>
+					<span style="--i:27;"></span>
+					<span style="--i:28;"></span>
+					<span style="--i:29;"></span>
+					<span style="--i:30;"></span>
+				</div>
+			</section>
+		</div>
 	
 	</main>
 <script src="./js/main.js"></script>

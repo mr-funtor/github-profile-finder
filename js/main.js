@@ -13,7 +13,7 @@ const monthsArray=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep
 // let updateTime="2021-04-13T21:47:21Z"
 
 
-//THIS PUTS THE CORRECT FORMAT FOR WHEN THE REPO WAS LAST UPDATED
+//THIS PUTS THE CORRECT TIME FORMAT FOR WHEN THE REPO WAS LAST UPDATED
 
 function checkTiming(updateTime){
 	
@@ -65,7 +65,7 @@ function checkUser(e){
 		
 		let url="https://api.github.com/graphql";
 		
-		let newUser=e.currentTarget.value;//picks out the username from the from input
+		let newUser=e.currentTarget.value.toLowerCase();//picks out the username from the from input
 		
 			//setup the query for the GRAPHql
 	const query={
@@ -170,6 +170,8 @@ function updatePage(rData){
 		let {name,description,forkCount,primaryLanguage,
 		updatedAt,stargazerCount}=repository.node;
 		
+		let languageColor= primaryLanguage.name.toLowerCase() || 'default';
+		
 		respositoriesWrapper.innerHTML+=`<article class="main-respository">
 						<header class="main-respository-head">
 							<div>
@@ -177,12 +179,12 @@ function updatePage(rData){
 								<p>${description}</p>
 							</div>
 							
-							<i class="far fa-star"><span class="the-star">Star</span></i>
+							<i class="far fa-star star-click"><span class="the-star">Star</span></i>
 						</header>
 						
 						
 						<footer>
-							<p class="rep-language"><i class="fas fa-circle"></i>${primaryLanguage.name}</p>
+							<p ><i class="fas fa-circle rep-language ${languageColor}"></i>${primaryLanguage.name}</p>
 							<p><i class="far fa-star"></i>${stargazerCount}</p>
 							<p><i class="fas fa-code-branch"></i>${forkCount}</p>
 							<p>${checkTiming(updatedAt)}</p>
@@ -190,12 +192,30 @@ function updatePage(rData){
 					</article>`
 	})
 	
+	//make the stars just created change on click
+	const allStar= document.querySelectorAll('.star-click');
+	const starWord= document.querySelectorAll('.the-star');
 	
-	
+	allStar.forEach((star)=>{
+		star.addEventListener('click',(e)=>{
+			if(!e.currentTarget.classList.contains('starred')){
+				e.currentTarget.classList="fas fa-star star-click starred"
+				e.currentTarget.firstElementChild.innerText='Unstar'
+				return
+			}
+			e.currentTarget.classList="far fa-star star-click"
+			e.currentTarget.firstElementChild.innerText='Star'
+			
+			
+		})
+	})
 	
 	
 	
 }
+
+//SEARCHING FOR 
+
 
 //INSERT THE MINI AVATAR AT THE TOP AFTER LONG SCROLL
 // const profileNameWrapper= document.querySelector('.profile-name-wrapper');

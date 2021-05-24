@@ -2,6 +2,8 @@
 //don't forget to return when there is nothing typed
 //don't forget to give display if no user is found
 
+
+//FETCH DATA AND INSERT THE DATA TO DOM
 const mainSearch= document.querySelector('.main-search');
 
 mainSearch.addEventListener('keydown',checkUser)
@@ -75,4 +77,33 @@ function checkUser(e){
 	
 }
 
+//INSERT THE MINI AVATAR AT THE TOP AFTER LONG SCROLL
+// const profileNameWrapper= document.querySelector('.profile-name-wrapper');
+const miniAviArea=document.querySelector('.mini-avi-area');
+const profileAvatar=document.querySelector('.profile-avatar');
 
+const options={
+
+	rootMargin: "100% 0px -100% 0px",//the takes the observation area to the top outside the viewport
+	threshold:1,
+}
+
+//this observes and checks if the main avatar is out of the browser
+let observer=new IntersectionObserver(avatarCheck, options);
+observer.observe(profileAvatar);
+
+function avatarCheck(entries){
+	
+	entries.forEach((entry)=>{
+		// console.log('seen',scrollY);
+		
+		//here if the MAIN avatar is in the observation area makes the mini avatar show
+		if(entry.isIntersecting){
+			return miniAviArea.classList.remove('invisible')
+		}
+		
+		//vice versa to the above
+		miniAviArea.classList.add('invisible')
+		
+	})
+}

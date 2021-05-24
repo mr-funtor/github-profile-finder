@@ -11,7 +11,7 @@
 		<nav class="main-nav">
 			<div class="main-nav-left">
 				<i class="fab fa-github"></i>
-				<input type="text" placeholder="Search for a github user"/>
+				<input class="main-search" type="text" placeholder="Search for a github user"/>
 				<ul>
 					<li>Pull <span>requests<span></li>
 					<li>Issues</li>
@@ -41,7 +41,7 @@
 		
 		
 		<header class="overview-header ">
-			<div class="mini-avi-area"> 
+			<div class="mini-avi-area invisible" > 
 				<img class="mini-avatar" src="./img/how.png" alt=""/>
 				<strong>mr-funtor</strong>
 			</div>
@@ -51,52 +51,93 @@
 			</nav>
 		</header>
 		
-		<section class="user-container inactive" >
+		<section class="user-container" >
+		
 			<aside class="profile-area ">
-				<img class="proile-avatar" src="./img/avatar.jpg" alt=""/>
-				<h2 class="profile-name">Profile Name</h2>
-				<p class="login-name">LoginName</p>
-				<p class="profile-bio"></p>
+				<div>
+					<img class="profile-avatar" src="./img/avatar.jpg" alt=""/>
+					<div class="profile-name-wrapper">
+						<h2 class="profile-name">Profile Name</h2>
+						<p class="login-name">LoginName</p>
+					</div>
+				</div>
+				
+				<p class="profile-bio">making frontend tech</p>
 			</aside>
 			
+			<header class="overview-header2 inactive">
+				<div class="mini-avi-area invisible" > 
+					<img class="mini-avatar" src="./img/how.png" alt=""/>
+					<strong>mr-funtor</strong>
+				</div>
+				
+				<nav class="respository-nav">
+					<h3><i class="fas fa-book-open"></i> Repositories <span>8</span></h3>
+				</nav>
+			</header>
+			
 			<div class="repository-area">
-				<input type="text" id="repository" name="repository" placeholder="Find a repository..."/>
+				<div class="rep-input-wrapper">
+					<input type="text" id="repository" name="repository" placeholder="Find a repository..."/>
+				</div>
 				
-				<h3>20 results for public repositories</h3>
+				<h3 class="respositories-number">5 results for public repositories</h3>
 				
-				<article class="main-respository">
-					<header>
-						<h2 class="respository-name">repoName.com</h2>
-						<i class="far fa-star">Star</i>
-					</header>
+				<div class="respositories-wrapper">
+					<article class="main-respository">
+						<header class="main-respository-head">
+							<div>
+								<h3 class="respository-name">repoName.com</h3>
+								<p>The description for the repository. I am hoping.
+						I found a man I can trust
+	And boy, I believe in us
+	I am terrified to love for the first time
+	Can't you see that I'm bound in chains?</p>
+							</div>
+							
+							<i class="far fa-star"><span class="the-star">Star</span></i>
+						</header>
+						
+						
+						<footer>
+							<p class="rep-language"><i class="fas fa-circle"></i>HTML</p>
+							<p><i class="far fa-star"></i>20</p>
+							<p><i class="fas fa-code-branch"></i>9</p>
+							<p>Updated on 1 Oct</p>
+						</footer>
+					</article>
 					
-					<footer>
-						<p>HTML</p>
-						<i class="far fa-star">20</i>
-						<i class="fas fa-code-branch">9</i>
-						<p>Updated on 1 Oct</p>
-					</footer>
-				</article>
-				
-				<article class="main-respository">
-					<header>
-						<h2 class="respository-name">repoName.com</h2>
-						<i class="far fa-star">Star</i>
-					</header>
-					
-					<footer>
-						<p>HTML</p>
-						<i class="far fa-star">20</i>
-						<i class="fas fa-code-branch">9</i>
-						<p>Updated on 1 Oct</p>
-					</footer>
-				</article>
+					<article class="main-respository">
+						<header class="main-respository-head">
+							<div>
+								<h3 class="respository-name">repoName.com</h3>
+								<p>The description for the repository. I am hoping.
+						I found a man I can trust
+	And boy, I believe in us
+	I am terrified to love for the first time
+	Can't you see that I'm bound in chains?</p>
+							</div>
+							
+							<i class="far fa-star"><span class="the-star">Star</span></i>
+						</header>
+						
+						
+						<footer>
+							<p class="rep-language"><i class="fas fa-circle"></i>HTML</p>
+							<p><i class="far fa-star"></i>20</p>
+							<p><i class="fas fa-code-branch"></i>9</p>
+							<p>Updated on 1 Oct</p>
+						</footer>
+					</article>
+				</div>
 				
 			</div>
 		
 		</section>
+		
+		
 	
 	</main>
-
+<script src="./js/main.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-//don't forget pull requests turns to pulls
 //don't forget to change the token
 
 const time= new Date();
@@ -6,20 +5,19 @@ const theMonth=time.getMonth();
 const presentYear=time.getFullYear();
 const presentDay=time.getDate();
 const monthsArray=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
-// let updateTime="2021-04-13T21:47:21Z"
 
 
 //THIS PUTS THE CORRECT TIME FORMAT FOR WHEN A REPO WAS LAST UPDATED
 
 function checkTiming(updateTime){
 	
+	//the time comes as a string, so slicing out the various timings is important
 	let repoYear=updateTime.slice(0,4);
 	let repoMonth=updateTime.slice(5,7);
 	let repoDay=updateTime.slice(8,10);
 	
 	if(Number(repoYear)<presentYear){
 		//this format is for when repo was updated years before
-		
 		return `Updated on ${repoDay} ${monthsArray[Number(repoMonth)]} ${repoYear}`
 		
 	}else if(Number(repoYear)===presentYear && Number(repoMonth)===theMonth+1){
@@ -40,18 +38,46 @@ function checkTiming(updateTime){
 	}
 }
 
-//CHANGE THE LAYOUT OF THE PAGE FROM WHAT IT LOOKS LIKE IN HOME SCREEN;
+//TAKES US BACK TO HOME SCREEN
+const gitIcon=document.querySelectorAll('.fa-github');
 const hiddenHomeItems=document.querySelectorAll('.homer');
-function changeLayout(){
+let onHomeScreen=true;
+gitIcon.forEach((icon)=>{
 	
-}
+	
+	icon.addEventListener('click', ()=>{
+		if(onHomeScreen)return showDialogue('Already on home page');//checks if the user is on the home screen
+		
+		screenLoadingPage.classList.remove('inactive');//displays the loading screen 
+		
+		hiddenHomeItems.forEach((item)=>{
+			if(item.classList.contains('main-nav') || item.classList.contains('main-nav-sec') ){
+					return item.classList.add('home-tune')//rearranges/restores the format of the top nav 
+				}
+				
+			item.classList.add('home')//readjusts top icons
+				
+				
+		})
+		
+			homeScreen.classList.remove('home')//adds the msg and input on the home screen
+			setTimeout(()=>{
+				screenLoadingPage.classList.add('inactive');//removes the loading screen
+			},500)
+			 
+			
+			onHomeScreen=true//keeps track that the user is now on the home screen
+	})
+	
+	
+})
+
 
 //FETCHS DATA FROM THE API
 const mainSearch= document.querySelectorAll('.main-search');
 const screenLoadingPage= document.querySelector('.screen-loader');//grabs the entire screen loadin page
 const homeScreen= document.querySelector('.home-screen');//grabs the entire screen loadin page
 let presentProfile;
-// let shownData=[]
 
 mainSearch.forEach((search)=>{
 	search.addEventListener('keydown',checkUser)
@@ -63,8 +89,9 @@ function checkUser(e){
 	if(e.keyCode===13){
 		
 		if(e.currentTarget.value.length===0)return showDialogue('no name was searched')//stops the event if nothing was typed
-		if(e.currentTarget.value===presentProfile)return showDialogue('Same profile as before')//crosschecks if the profile is what was just typed
-		presentProfile=e.currentTarget.value
+		if(e.currentTarget.value===presentProfile && !onHomeScreen)return showDialogue('Same profile as before')//crosschecks if the profile is what was just typed
+		presentProfile=e.currentTarget.value;
+		
 		
 		screenLoadingPage.classList.remove('inactive');//displays the loading screen pending the fetched data
 		
@@ -72,6 +99,11 @@ function checkUser(e){
 		let url="https://api.github.com/graphql";
 		
 		let newUser=e.currentTarget.value.toLowerCase();//picks out the username from the from input
+		
+		mainSearch.forEach((search)=>{
+			if(e.currentTarget!==search)search.value='';
+			if(onHomeScreen && e.currentTarget==search)e.currentTarget.value='';
+		})
 		
 			//setup the query for the GRAPHql
 	const query={
@@ -108,11 +140,9 @@ function checkUser(e){
 		
 			let h = new Headers();
 			h.append("Content-Type", "application/json");
-			// let encoded=window.btoa("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");
-			let auth= "bearer " + "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";
+			let auth= "bearer " + "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";
 			h.append('Authorization', auth);
 			
-			console.log(auth);
 			
 			let req= new Request(url,{
 				method:'POST',
@@ -124,18 +154,16 @@ function checkUser(e){
 			fetch(req)
 			.then(response => response.json())
 		.then((data)=>{
-			// console.log(JSON.stringify(data));
-			// let newData=JSON.stringify(data).replace('null', '\"wee\"')
 			const newData=JSON.stringify(data);
 			const changedData=JSON.parse(newData);
 			
 			updatePage(changedData)//calls the function that changes the profile
 			showRepositories(changedData,'profile')//this sieves the data to know if it's all respositories or a single
-			// shownData={...changedData}
+			
 			
 			//this changes the layout of the page from what it looks like on the home screen
 			hiddenHomeItems.forEach((item)=>{
-				item.classList.remove('home')//readds top icons
+				item.classList.remove('home')//readjusts top icons
 				
 				if(item.classList.contains('home-tune')){
 					item.classList.remove('home-tune')//restores the format top nav 
@@ -145,10 +173,11 @@ function checkUser(e){
 			homeScreen.classList.add('home')//removes the msg and input on the home screen
 			
 			screenLoadingPage.classList.add('inactive');//removes the loading screen
-			console.log(changedData.data.user.repositories.edges)
+			
+			onHomeScreen=false//keeps track that the user is now off on the home screen
 		})
 		.catch((err)=>{
-			// console.log(err)
+			//where there is an error because a wrong name was typed
 			screenLoadingPage.classList.add('inactive');//removes the loading screen
 			showDialogue('No user found')
 		});
@@ -167,10 +196,12 @@ const profileBio= document.querySelector('.profile-bio');
 const totalRepDisplays= document.querySelectorAll('.total-repositories');
 const respositoriesWrapper= document.querySelector('.respositories-wrapper');
 const searchRepositoriesDisp=document.querySelector('.respositories-number');
+const pageTitle=document.querySelector('.fullPage-title');
+
 
 //THIS UPDATES THE PROFILE AND REPOSITORIES COUNT
 function updatePage(rData){
-	console.log('in here')
+	
 	//this changes the pictures
 	mainAvatar.src=rData.data.user.avatarUrl;
 	miniAvi.forEach((avi)=>{
@@ -182,6 +213,7 @@ function updatePage(rData){
 	miniAviName.innerText=rData.data.user.name;//the name
 	loginName.innerText=rData.data.user.login;//login name
 	profileBio.innerText=rData.data.user.bio;//the users bio
+	pageTitle.innerText=rData.data.user.name//changes the page title name;
 	
 	//input the total number of repositories the user has
 	let totalRepoLength=rData.data.user.repositories.totalCount//checks the length of all repos
@@ -196,10 +228,9 @@ function updatePage(rData){
 
 //SIEVES THE REPOSITORIES 
 function showRepositories(rData,hook){
-		console.log('here here')
 		let fullReposit;
 		
-		//the use of a hook here is for the program to know if it's a single/all the repos that is searched for
+		//the use of a hook here is for the program to know if it's single/all the repos that is searched for
 	if(hook==='singleRepo'){
 		fullReposit=[rData.data.user.repository]//the single repository searched for
 	}else{
@@ -225,10 +256,8 @@ function repDomUpdate(repoData){
 	let {name,description,forkCount,primaryLanguage,
 		updatedAt,stargazerCount}=repoData;
 	
-	if(primaryLanguage===null)primaryLanguage={name:'none'}//this prevents a bug where primaryLanguage returns null
+	if(primaryLanguage===null)primaryLanguage={name:'none'}//this prevents a bug in case primaryLanguage returns null
 	
-	
-		
 		respositoriesWrapper.innerHTML+=`<article class="main-respository">
 						<header class="main-respository-head">
 							<div>
@@ -249,7 +278,7 @@ function repDomUpdate(repoData){
 					</article>`
 
 
-	//makes the stars just created change on click
+	//makes the stars just created above change on click
 	const allStar= document.querySelectorAll('.star-click');
 	const starWord= document.querySelectorAll('.the-star');
 	
@@ -301,7 +330,6 @@ accessElements.forEach((elem)=>{
 
 
 //INSERT THE MINI AVATAR AT THE TOP AFTER LONG SCROLL
-// const profileNameWrapper= document.querySelector('.profile-name-wrapper');
 const miniAviArea=document.querySelector('.mini-avi-area');
 const profileAvatar=document.querySelector('.profile-avatar');
 
@@ -318,9 +346,8 @@ observer.observe(profileAvatar);
 function avatarCheck(entries){
 	
 	entries.forEach((entry)=>{
-		// console.log('seen',scrollY);
 		
-		//here if the MAIN avatar is in the observation area makes the mini avatar show
+		//here, if the MAIN avatar is in the observation area, make the mini avatar show
 		if(entry.isIntersecting){
 			return miniAviArea.classList.remove('invisible')
 		}

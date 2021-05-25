@@ -9,40 +9,53 @@
 <body>
 	<main class="body-container">
 			<!-- TOP MAIN NAV -->
-		<nav class="main-nav">
-			<div class="main-nav-left">
+		<nav class="main-nav home-tune homer">
+			<div class="main-nav-left ">
 				<i class="fab fa-github"></i>
-				<input class="main-search" type="text" placeholder="Search for a github user"/>
-				<ul>
-					<li>Pull <span>requests<span></li>
-					<li>Issues</li>
-					<li>Marketplace</li>
-					<li>Explore</li>
+				<input class="main-search homer home" type="text" placeholder="Search for a github user"/>
+				<ul class="homer home">
+					<li class="access homer home">Pull<span class="hidden-letter">s</span> <span>requests<span></li>
+					<li class="access homer home">Issues</li>
+					<li class="access homer home">Marketplace</li>
+					<li class="access homer home">Explore</li>
 				</ul>
 			</div>
 			
-			<div class="main-nav-right">
-					<i class="fas fa-bell"></i>
-					<i class="fas fa-plus"></i>
+			<div class="main-nav-right homer home">
+					<i class="fas fa-bell access"></i>
+					<i class="fas fa-plus access homer home"></i>
 					
 				
 				<div>
-					<img class="mini-avatar" src="./img/how.png" alt=""/>
+					<img class="mini-avatar access " src="./img/how.png" alt=""/>
 					<i class="fas fa-caret-down"></i>
 				</div>
 			</div>
 			
 			<!-- SECONDARY NAV -->
-			<div class="main-nav-sec">
+			<div class="main-nav-sec home-tune homer">
 				<i class="fab fa-github"></i>
-				<input class="main-search" type="text" placeholder="Search for a github user"/>
-				<i class="fas fa-bell"></i>
+				<input class="main-search homer home" type="text" placeholder="Search for a github user"/>
+				<i class="fas fa-bell access homer home"></i>
 			</div>
 		</nav>
 		
+			<!-- HOME SCREEN -->
+			
+		<section class="home-screen">
+			
+				<p>Discovering amazing Github users has become so easy.
+				Simply search for a name and connect to the wonderful projects they are working on.
+				You can start here</p>
+			
+			
+			<input class="main-search" type="text" placeholder="Search for a github user"/>
+		
+		</section>
+		
 		
 		<!-- REPOSITORIES HEADER/NAV -->
-		<header class="overview-header ">
+		<header class="overview-header  homer home">
 			<div class="mini-avi-area invisible" > 
 				<img class="mini-avatar" src="./img/how.png" alt=""/>
 				<strong class="mini-avatar-name">mr-funtor</strong>
@@ -55,7 +68,7 @@
 		
 		
 		
-		<section class="user-container" >
+		<section class="user-container  homer home" >
 		
 		<!-- PROFILE SECTION -->
 		
@@ -90,7 +103,7 @@
 					<input type="text" id="repository-search" name="repository" placeholder="Find a repository..."/>
 				</div>
 				
-				<h3 class="respositories-number inactive">5 results for public repositories</h3>
+				<h3 class="respositories-number ">20 results for public repositories</h3>
 				
 				<div class="respositories-wrapper">
 					<article class="main-respository">
@@ -144,6 +157,8 @@
 		
 		</section>
 		
+		
+		
 		<!-- SCREEN LOADER -->
 		<div class="screen-loader inactive">
 			<section class="loading-wrapper">
@@ -183,6 +198,12 @@
 		</div>
 	
 	</main>
+	
+	
+	<!-- ERROR BOX -->
+		<article class="error-box">
+			<p>Access Denied<p>
+		</article>
 <script src="./js/main.js"></script>
 </body>
 </html>

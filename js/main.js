@@ -60,7 +60,9 @@ gitIcon.forEach((icon)=>{
 				
 		})
 		
-			homeScreen.classList.remove('home')//adds the msg and input on the home screen
+			homeScreen.classList.remove('home')//adds the welcome message and input back to the page
+			
+			pageTitle.innerText='Github Users Finder'//changes the page title name;
 			setTimeout(()=>{
 				screenLoadingPage.classList.add('inactive');//removes the loading screen
 			},500)
@@ -213,7 +215,7 @@ function updatePage(rData){
 	miniAviName.innerText=rData.data.user.name;//the name
 	loginName.innerText=rData.data.user.login;//login name
 	profileBio.innerText=rData.data.user.bio;//the users bio
-	pageTitle.innerText=rData.data.user.name//changes the page title name;
+	pageTitle.innerText=rData.data.user.name || 'Github User'//changes the page title name;
 	
 	//input the total number of repositories the user has
 	let totalRepoLength=rData.data.user.repositories.totalCount//checks the length of all repos

@@ -64,7 +64,6 @@ body{
 	border-radius: 5px;
 	vertical-align: middle;
 	font-size: 13px;
-	text-transform:lowercase;
 	color:white;
 	background:#24292e;
 	padding: 12px 12px;
@@ -253,11 +252,13 @@ body{
 	justify-content:center;
 }
 
+/* PROFILE AND ALL REPOSITORIES */
+
 .user-container{
 	position:relative;
 	min-height: 80vh;
 	width:100%;
-	top: -50px;
+	top: -48px;
 	display:flex;
 	justify-content: space-between;
 	padding: 15px 4vw;
@@ -267,6 +268,7 @@ body{
 
 .profile-area{
 	width:26%;
+	margin-right:10px;
 }
 
 
@@ -290,7 +292,7 @@ body{
 .profile-bio{
 	margin-top: 15px;
 	position:static;
-	font-size: 14.5px;
+	font-size: 15px;
 }
 
 .repository-area{
@@ -417,17 +419,63 @@ body{
 
 /* FOOTER */
 .git-footer{
-	height:55px;
+	min-height:120px;
 	width:100%;
-	display:flex;
-	flex-direction:column;
-	justify-content:center;
+	display:grid;
+	grid-template-columns: 3fr 1fr 3fr;
 	align-items:center;
-	padding: 5px;
-	background:lightgrey;
+	align-content:center;
+	justify-content:space-evenly;
+	padding: 0px 2.5vw;
+	border-top:1px solid var(--secondary-color);
 	bottom:0;
 }
 
+
+.git-footer p{
+	display:inline-flex;
+	color:grey;
+}
+
+.git-footer a{
+	color:var(--blue-accent);
+	cursor:not-allowed;
+}
+
+.git-footer a:hover{
+	border-bottom:1px solid var(--blue-accent);
+}
+
+.git-footer i{
+	width:100%;
+	height:100%;
+	display:flex;
+	justify-content:center;
+	font-size: 36px;
+	color:lightgrey;
+	cursor:pointer;
+}
+
+.footer-left{
+	font-size:13px;
+	width:100%;
+	height:100%;
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content:space-between;
+
+}
+
+.footer-right{
+	font-size:13px;
+	width:100%;
+	height:100%;
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content:space-between;
+}
 
 /* LOADING SCREEN */
 .screen-loader{
@@ -607,7 +655,28 @@ body{
 		width:32.5vw;
 	}
 	
+	.git-footer{
+		grid-template-columns:1fr;
+	}
 	
+	.git-footer i{
+		display:none;
+	}
+	
+	.footer-left{
+		justify-content:center;
+	}
+	
+	.footer-left>*,
+	.footer-right>*{
+		margin-left:10px;
+	}
+
+	.footer-right{
+		justify-content:center;
+		margin-top:10px;
+	}
+
 }
 
 @media(max-width:770px){

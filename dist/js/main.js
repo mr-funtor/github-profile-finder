@@ -86,7 +86,7 @@ mainSearch.forEach((search)=>{
 })
 
 
-function checkUser(e){
+async function checkUser(e){
 	
 	if(e.keyCode===13){
 		
@@ -140,9 +140,12 @@ function checkUser(e){
 		};
 		
 		
+		const response= await fetch('/.netlify/functions/getUser');
+		const data = await response.json();
+		
 			let h = new Headers();
 			h.append("Content-Type", "application/json");
-			let auth= "bearer " + "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";
+			let auth= "bearer " + data.msg;
 			h.append('Authorization', auth);
 			
 			

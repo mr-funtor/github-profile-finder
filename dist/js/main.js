@@ -152,7 +152,6 @@ async function checkUser(e){
 			let req= new Request(url,{
 				method:'POST',
 				headers:h,
-				credentials:'same-origin',
 				body: JSON.stringify(query)
 			});
 			

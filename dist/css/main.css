@@ -694,6 +694,7 @@ body{
 		margin-top:20px;
 		flex-direction:column;
 		padding: 0 2.5vw;
+		justify-content:flex-start;
 	}
 	.profile-area{
 		width:100%;

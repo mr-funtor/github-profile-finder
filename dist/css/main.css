@@ -54,6 +54,10 @@ body{
 	cursor:pointer;
 }
 
+.main-nav-left>i:hover{
+	color:lightgrey;
+}
+
 
 .main-nav-left>input,
 .main-nav-sec>input{
@@ -173,6 +177,10 @@ body{
 
 .main-nav-sec>i{
 	cursor:pointer;
+}
+
+..main-nav-sec>i{
+	color:lightgrey;
 }
 
 .main-nav-sec>i:nth-child(2){
